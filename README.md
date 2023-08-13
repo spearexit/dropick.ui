@@ -14,9 +14,9 @@ use pnpm
 ## SETUP
 
 ```bash
-// install dependencies
+# install dependencies
 pnpm install
 
-// run project
+# run project
 pnpm dev
 ```
