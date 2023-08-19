@@ -1,13 +1,13 @@
 "use client";
-import { Button, Tooltip } from "@nextui-org/react";
+
+import { CardList, MultipleContainers } from "@/components/List/CardList";
 
 export default function Home() {
   return (
     <main>
-      <div className="flex w-full h-[100vh] items-center justify-center">
-        <Tooltip content="링크 스따또">
-          <Button>Hover me</Button>
-        </Tooltip>
+      <div className="flex w-full min-h-[100vh] p-6">
+        {/* <CardList /> */}
+        <MultipleContainers />
       </div>
     </main>
   );
