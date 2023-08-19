@@ -500,10 +500,8 @@ export const MultipleContainers = ({
         style={{
           display: "inline-grid",
           boxSizing: "border-box",
-          padding: 20,
           gridAutoFlow: vertical ? "row" : "column",
         }}
-        className="gap-10"
       >
         <SortableContext
           items={[...containers, PLACEHOLDER_ID]}
@@ -780,10 +778,10 @@ function useMountStatus() {
 
 export const CardList = () => {
   return (
-    <div className="flex flex-col gap-4 w-[260px]">
-      <div className="sticky top-0 z-[100] overflow-hidden border-black border-solid border-1 rounded-md">
+    <div className="flex flex-col gap-4">
+      {/* <div className="sticky top-0 z-[100] overflow-hidden border-black border-solid border-1 rounded-md">
         <h4 className="text-center font-bold  bg-white py-2">TO DO</h4>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-4">
         {list.map((item) => (
           <CardComponent key={item} />

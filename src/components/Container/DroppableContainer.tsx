@@ -118,7 +118,11 @@ export const Container = forwardRef<
             "--columns": columns,
           } as React.CSSProperties
         }
-        className="flex flex-col gap-4"
+        className={`flex flex-col gap-4 p-5 rounded-xl ${
+          hover ? "bg-slate-50" : ""
+        } ${
+          placeholder ? "flex justify-center items-center w-[260px] border" : ""
+        }`}
         //   className={classNames(
         //     styles.Container,
         //     unstyled && styles.unstyled,
@@ -132,16 +136,28 @@ export const Container = forwardRef<
         tabIndex={onClick ? 0 : undefined}
       >
         {label ? (
-          <div className="flex justify-between">
+          <div className={`flex justify-between`}>
             {label}
-            <div>
+            <div className="flex gap-4">
               {onRemove ? (
-                <Button size="sm" onClick={onRemove}>
-                  remove
-                </Button>
+                <button onClick={onRemove}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    viewBox="0 0 384 512"
+                  >
+                    <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                  </svg>
+                </button>
               ) : null}
-              <button className="p-2 border" {...handleProps}>
-                2
+              <button {...handleProps}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <path d="M40 352l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zm192 0l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zM40 320c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0zM232 192l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40zM40 160c-22.1 0-40-17.9-40-40L0 72C0 49.9 17.9 32 40 32l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0zM232 32l48 0c22.1 0 40 17.9 40 40l0 48c0 22.1-17.9 40-40 40l-48 0c-22.1 0-40-17.9-40-40l0-48c0-22.1 17.9-40 40-40z" />
+                </svg>
               </button>
             </div>
           </div>
