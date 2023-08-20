@@ -37,6 +37,7 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal, unstable_batchedUpdates } from "react-dom";
 import { DroppableContainer, Container } from "../Container/DroppableContainer";
 import { Item } from "../Card/Item";
+import { Button } from "@nextui-org/react";
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const defaultInitializer = (index: number) => index;
@@ -227,6 +228,7 @@ export const MultipleContainers = ({
         D: createRange(itemCount, (index) => `D${index + 1}`),
       }
   );
+
   const [containers, setContainers] = useState(
     Object.keys(items) as UniqueIdentifier[]
   );
@@ -317,7 +319,6 @@ export const MultipleContainers = ({
     if (id in items) {
       return id;
     }
-
     return Object.keys(items).find((key) => items[key].includes(id));
   };
 
@@ -342,6 +343,16 @@ export const MultipleContainers = ({
 
     setActiveId(null);
     setClonedItems(null);
+  };
+
+  const addContent = (containerId: UniqueIdentifier) => {
+    setItems((p) => ({
+      ...p,
+      [containerId]: [
+        ...p[containerId],
+        `${containerId}${p[containerId].length + 1}`,
+      ],
+    }));
   };
 
   useEffect(() => {
@@ -541,6 +552,9 @@ export const MultipleContainers = ({
                   );
                 })}
               </SortableContext>
+              <Button onClick={() => addContent(containerId)}>
+                + Add content
+              </Button>
             </DroppableContainer>
           ))}
           {minimal ? undefined : (
@@ -556,16 +570,17 @@ export const MultipleContainers = ({
           )}
         </SortableContext>
       </div>
-      {createPortal(
-        <DragOverlay adjustScale={adjustScale} dropAnimation={dropAnimation}>
-          {activeId
-            ? containers.includes(activeId)
-              ? renderContainerDragOverlay(activeId)
-              : renderSortableItemDragOverlay(activeId)
-            : null}
-        </DragOverlay>,
-        document.body
-      )}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <DragOverlay adjustScale={adjustScale} dropAnimation={dropAnimation}>
+            {activeId
+              ? containers.includes(activeId)
+                ? renderContainerDragOverlay(activeId)
+                : renderSortableItemDragOverlay(activeId)
+              : null}
+          </DragOverlay>,
+          document.body
+        )}
       {trashable && activeId && !containers.includes(activeId) ? (
         <Trash id={TRASH_ID} />
       ) : null}

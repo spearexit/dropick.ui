@@ -19,7 +19,7 @@ export default function RootLayout({
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
         precedence="default"
       />
-      <body>
+      <body suppressHydrationWarning={true}>
         <Providers>{children}</Providers>
       </body>
     </html>

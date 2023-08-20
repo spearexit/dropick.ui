@@ -114,7 +114,7 @@ export const Item = React.memo(
           ref={ref}
         >
           <Card
-            className={`py-4 w-[260px]${
+            className={`py-4 w-[260px] ${
               !dragging || dragOverlay ? "" : "opacity-50"
             }`}
             // className={classNames(
@@ -133,9 +133,7 @@ export const Item = React.memo(
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
               <p className={`text-tiny uppercase font-bold`}>Daily Mix</p>
               <small className="text-default-500">12 Tracks</small>
-              <h4 className={`font-bold text-large text-[${color}]`}>
-                {value}
-              </h4>
+              <h4 className={`font-bold text-large`}>{value}</h4>
               {onRemove ? (
                 <button onClick={onRemove}>
                   <svg

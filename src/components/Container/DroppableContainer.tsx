@@ -121,7 +121,9 @@ export const Container = forwardRef<
         className={`flex flex-col gap-4 p-5 rounded-xl ${
           hover ? "bg-slate-50" : ""
         } ${
-          placeholder ? "flex justify-center items-center w-[260px] border" : ""
+          placeholder
+            ? "flex justify-center items-center w-[260px] h-[260px] border-dashed border"
+            : ""
         }`}
         //   className={classNames(
         //     styles.Container,
