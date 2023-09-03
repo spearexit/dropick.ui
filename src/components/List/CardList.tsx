@@ -1,4 +1,3 @@
-import { CardComponent } from "../Card/Card";
 import {
   CancelDrop,
   closestCenter,
@@ -38,7 +37,6 @@ import { createPortal, unstable_batchedUpdates } from "react-dom";
 import { DroppableContainer, Container } from "../Container/DroppableContainer";
 import { Item } from "../Card/Item";
 import { Button } from "@nextui-org/react";
-const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const defaultInitializer = (index: number) => index;
 
@@ -202,7 +200,7 @@ const empty: UniqueIdentifier[] = [];
 
 export const MultipleContainers = ({
   adjustScale = false,
-  itemCount = 3,
+  itemCount = 5,
   cancelDrop,
   columns,
   handle = false,
@@ -215,7 +213,7 @@ export const MultipleContainers = ({
   modifiers,
   renderItem,
   strategy = verticalListSortingStrategy,
-  trashable = false,
+  trashable = true,
   vertical = false,
   scrollable,
 }: Props) => {
@@ -525,6 +523,7 @@ export const MultipleContainers = ({
           {containers.map((containerId) => (
             <DroppableContainer
               key={containerId}
+              horizontal
               id={containerId}
               label={minimal ? undefined : `Column ${containerId}`}
               columns={columns}
@@ -790,18 +789,3 @@ function useMountStatus() {
 
   return isMounted;
 }
-
-export const CardList = () => {
-  return (
-    <div className="flex flex-col gap-4">
-      {/* <div className="sticky top-0 z-[100] overflow-hidden border-black border-solid border-1 rounded-md">
-        <h4 className="text-center font-bold  bg-white py-2">TO DO</h4>
-      </div> */}
-      <div className="flex flex-col gap-4">
-        {list.map((item) => (
-          <CardComponent key={item} />
-        ))}
-      </div>
-    </div>
-  );
-};
